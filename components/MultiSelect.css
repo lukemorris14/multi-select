@@ -1,0 +1,200 @@
+.multi-select {
+  position: relative;
+  width: 100%;
+}
+
+.multi-select__container {
+  min-height: 48px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  cursor: text;
+  transition: all 0.15s;
+}
+
+.multi-select__container:hover {
+  border-color: #9ca3af;
+}
+
+.multi-select__container:focus-within {
+  border-color: #3b82f6;
+  outline: 2px solid #dbeafe;
+  outline-offset: 2px;
+}
+
+.multi-select__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.multi-select__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #dbeafe;
+  color: #1e40af;
+  transition: all 0.15s;
+}
+
+.multi-select__chip--focused {
+  background: #bfdbfe;
+  color: #1e3a8a;
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.multi-select__chip-label {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.multi-select__chip-remove {
+  padding: 2px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.multi-select__chip-remove:hover {
+  background: #93c5fd;
+}
+
+.multi-select__chip-remove:focus {
+  outline: none;
+}
+
+.multi-select__chip-icon {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.multi-select__input {
+  flex: 1;
+  min-width: 120px;
+  padding: 4px 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+}
+
+.multi-select__clear {
+  padding: 4px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.multi-select__clear:hover {
+  background: #f3f4f6;
+}
+
+.multi-select__clear:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.multi-select__clear-icon {
+  width: 16px;
+  height: 16px;
+  color: #6b7280;
+  fill: currentColor;
+}
+
+.multi-select__dropdown {
+  position: absolute;
+  z-index: 50;
+  width: 100%;
+  margin-top: 8px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  outline: none;
+}
+
+.multi-select__list {
+  box-sizing: border-box;
+  direction: ltr;
+  position: relative;
+  will-change: transform;
+  overflow: auto;
+}
+
+.multi-select__option {
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.multi-select__option:hover {
+  background: #f9fafb;
+}
+
+.multi-select__option--focused {
+  background: #eff6ff;
+}
+
+.multi-select__option--selected {
+  font-weight: 500;
+  color: #1e3a8a;
+}
+
+.multi-select__option-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.multi-select__option-label {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.multi-select__option-group {
+  font-size: 12px;
+  color: #6b7280;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.multi-select__option--selected .multi-select__option-group {
+  color: #1d4ed8;
+}
+
+.multi-select__option-check {
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+  flex-shrink: 0;
+  color: #2563eb;
+  fill: currentColor;
+}
+
+.multi-select__footer {
+  padding: 8px 16px;
+  font-size: 12px;
+  color: #6b7280;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
