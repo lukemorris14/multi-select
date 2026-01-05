@@ -11,7 +11,7 @@ A multi-select dropdown that handles 10,000+ items with fuzzy search, virtual sc
 ```bash
 npm install
 npm run dev
-npm test  # Run accessibility tests
+npm test 
 ```
 
 Open [http://localhost:3001](http://localhost:3001)
@@ -24,7 +24,7 @@ Open [http://localhost:3001](http://localhost:3001)
 
 Selected items always appear first, followed by unselected items. When searching, selected items stay pinned at the top while unselected items are filtered and ranked by fuzzy match score via fuse.js (threshold 0.3). This design prioritizes visibility—you can always see and manage selections without scrolling, even while searching.
 
-The ordering happens in a useMemo that splits items into two arrays: selected and unselected. If there's a search query, fuse.js filters and scores only the unselected items, then we concatenate selected + searched.
+The ordering splits items into two arrays: selected and unselected. If there's a search query, fuse.js filters and scores only the unselected items, then we concatenate selected + searched.
 
 The test dataset includes realistic Deck use cases: vendors (AWS, Stripe, Salesforce), merchants (Uber, Starbucks, Delta), corporate cards, expense categories, departments, cost centers, projects, and GL codes.
 
@@ -48,15 +48,11 @@ Uses a **virtual focus index** separate from DOM focus. The input field keeps ac
 
 **Dependencies:** fuse.js (~24KB) and react-virtualized (~90KB) are single-purpose libraries. Could swap react-virtualized for react-window (~7KB) in production, but chose stability for this assignment.
 
-**Styling:** Uses BEM (Block Element Modifier) CSS methodology instead of utility frameworks. This avoids initial CSS bloat and keeps the component self-contained with clear, maintainable styles in a single CSS file.
+**Styling:** Uses BEM (Block Element Modifier) CSS methodology instead of utility frameworks (Other considerations here were tailwind, Styled-components, and SASS). This approach avoids over-complicating css when it isn't inherently complex
 
 ### 4. Accessibility Approach
 
 Follows WAI-ARIA Combobox and Listbox patterns:
-- Container: `role="combobox"` with `aria-expanded`, `aria-haspopup`
-- List: `role="listbox"` with `aria-multiselectable`
-- Items: `role="option"` with `aria-selected`
-- Active item announced via `aria-activedescendant`
 
 All interactive elements have descriptive `aria-label` attributes. Visual focus indicators (blue rings) are distinct from hover states following contrast designs of a11y. Fully functional with keyboard only—no mouse required.
 
@@ -69,5 +65,7 @@ All interactive elements have descriptive `aria-label` attributes. Visual focus 
 **Performance:** Web Workers for search on 50k+ datasets, progressive loading, better scroll optimization.
 
 **Features:** Group separators in dropdown, custom chip designs, bulk actions like select all from search results, multi-select dropdown items, saved filters, async data loading.
+
+**A11y:** Spend some time testing against screen readers to ensure labels are read as expected
 
 ---
