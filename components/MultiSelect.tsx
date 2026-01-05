@@ -100,9 +100,7 @@ export function MultiSelect({
 
   const scrollToIndex = useCallback((index: number) => {
     if (listRef.current) {
-      requestAnimationFrame(() => {
-        listRef.current?.scrollToRow(index);
-      });
+      listRef.current.scrollToRow(index);
     }
   }, []);
 
