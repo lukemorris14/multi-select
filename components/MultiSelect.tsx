@@ -80,6 +80,7 @@ export function MultiSelect({
     if (newSelection.has(id)) {
       newSelection.delete(id);
     } else {
+
       newSelection.add(id);
     }
     onSelectionChange(newSelection);
@@ -137,24 +138,15 @@ export function MultiSelect({
     switch (e.key) {
       case 'ArrowDown':
         e.preventDefault();
-        setFocusedIndex(prev => {
-          const next = Math.min(prev + 1, orderedItems.length - 1);
-          scrollToIndex(next);
-          return next;
-        });
+        setFocusedIndex(prev => Math.min(prev + 1, orderedItems.length - 1));
         break;
         
       case 'ArrowUp':
         e.preventDefault();
-        setFocusedIndex(prev => {
-          const next = Math.max(prev - 1, 0);
-          scrollToIndex(next);
-          return next;
-        });
+        setFocusedIndex(prev => Math.max(prev - 1, 0));
         break;
         
       case 'Enter':
-      case ' ':
         e.preventDefault();
         if (orderedItems[focusedIndex]) {
           toggleItem(orderedItems[focusedIndex].id);
@@ -239,6 +231,14 @@ export function MultiSelect({
   useEffect(() => {
     setFocusedIndex(0);
   }, [searchQuery]);
+
+  useEffect(() => {
+    if (isOpen && listRef.current) {
+      requestAnimationFrame(() => {
+        listRef.current?.scrollToRow(focusedIndex);
+      });
+    }
+  }, [focusedIndex, isOpen]);
 
   useEffect(() => {
     if (focusedChipIndex >= 0 && containerRef.current) {
